@@ -36,6 +36,9 @@ def search_repo():
     url = f"{BASE_URL}/search/repositories?q={name}"
     data = requests.get(url).json()
 
+    if not data["items"]:
+        print("Ничего не найдено")
+
     for repo in data["items"][:5]:
         print(repo["name"], "-", repo["html_url"])
 
